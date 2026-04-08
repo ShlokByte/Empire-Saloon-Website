@@ -3,7 +3,7 @@
 This is the official website for **Empire Salon**, a hair salon in Palanpur, Gujarat.
 
 ## Live Website
-👉 https://shlokbyte.github.io/trial-1/
+👉 https://shlokbyte.github.io/Empire-Saloon-Website/
 
 ## What's on the website
 - Home page with the salon name and a booking button
