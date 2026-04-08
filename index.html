@@ -1,180 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Empire Hair Saloon</title>
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-  <style>
-    html { scroll-behavior: smooth; }
-
-    .btn { transition: all 0.3s ease; }
-    .btn:hover { transform: scale(1.05); }
-
-    #cursor {
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease;
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Empire Salon</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#0a0a0c;--dark2:#141418;--silver:#c8c8d4;--gold:#b8963e;--dim:#707080;--white:#f0f0f5;--fd:'Cinzel Decorative',serif;--ft:'Cinzel',serif}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--silver);font-family:Georgia,serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:99;display:flex;justify-content:space-between;align-items:center;padding:14px 40px;background:rgba(10,10,12,.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(200,200,212,.08)}
+.nav-logo{font-family:var(--fd);font-size:1rem;letter-spacing:.3em;background:linear-gradient(135deg,#c8c8d4,#fff,#8a8aaa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:var(--ft);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+#home{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+.crown{font-size:2.5rem;color:var(--gold);margin-bottom:8px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-title{font-family:var(--fd);font-size:clamp(3.5rem,13vw,9rem);font-weight:700;background:linear-gradient(180deg,#e8e8f0,#fff 20%,#b0b0c0 45%,#d8d8e8 60%,#8a8aa0 80%,#c0c0d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:.95;letter-spacing:.06em}
+.hero-sub{font-family:var(--ft);font-size:clamp(.8rem,2.5vw,1.4rem);letter-spacing:.5em;text-transform:uppercase;color:var(--dim);margin:10px 0 28px}
+.divider{display:flex;align-items:center;gap:12px;width:min(360px,80vw);margin-bottom:20px}
+.divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.tagline{font-style:italic;color:var(--dim);font-size:1.1rem;margin-bottom:40px}
+.btn{font-family:var(--ft);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dark);background:linear-gradient(135deg,#c8c8d4,#fff,#a0a0b8);padding:14px 42px;text-decoration:none;display:inline-block;transition:opacity .3s}
+.btn:hover{opacity:.85}
+section{padding:80px 40px}
+.sec-label{font-family:var(--ft);font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
+.sec-title{font-family:var(--fd);font-size:clamp(1.8rem,4vw,3rem);background:linear-gradient(135deg,#c8c8d4,#fff,#8a8aaa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+.sec-rule{width:60px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:40px}
+.sec-center{text-align:center}.sec-center .sec-rule{margin:0 auto 40px}
+#services{background:var(--dark2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(200,200,212,.07);max-width:1100px;margin:0 auto}
+.card{background:var(--dark2);padding:36px 28px;transition:background .3s}
+.card:hover{background:#1e1e26}
+.card-icon{font-size:1.4rem;margin-bottom:12px;display:block}
+.card-name{font-family:var(--ft);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white);margin-bottom:8px}
+.card-desc{font-size:.95rem;color:var(--dim);font-style:italic}
+#gallery{background:var(--dark)}
+.gallery-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4px;max-width:900px;margin:0 auto}
+.gitem{position:relative;overflow:hidden;aspect-ratio:3/4}
+.gitem img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.85);transition:all .5s}
+.gitem:hover img{filter:brightness(1);transform:scale(1.03)}
+.gitem::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,12,.6),transparent 50%)}
+.glabel{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:1;font-family:var(--ft);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--white);background:rgba(10,10,12,.5);padding:7px 18px;border:1px solid rgba(200,200,212,.2);white-space:nowrap;backdrop-filter:blur(4px)}
+#contact{background:var(--dark2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:900px;margin:0 auto;align-items:start}
+.contact-info h3{font-family:var(--ft);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:28px 0 8px}
+.contact-info h3:first-child{margin-top:0}
+.contact-info p,.contact-info a{color:var(--dim);text-decoration:none;display:block;transition:color .3s;font-size:1rem}
+.contact-info a:hover{color:var(--white)}
+.cta-btns{display:flex;flex-direction:column;gap:14px;padding-top:100px}
+.btn-cta{font-family:var(--ft);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;padding:16px 28px;text-decoration:none;text-align:center;transition:all .3s;border:1px solid rgba(200,200,212,.2);color:var(--silver);display:block}
+.btn-cta:hover{background:rgba(200,200,212,.07);color:var(--white)}
+.btn-cta.call{background:linear-gradient(135deg,#c8c8d4,#fff,#a0a0b8);color:var(--dark);border:none}
+.btn-cta.wa{background:#128C7E;border-color:#128C7E;color:#fff}
+.btn-cta.wa:hover{background:#075E54}
+footer{background:var(--dark);border-top:1px solid rgba(200,200,212,.07);padding:28px 40px;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:var(--fd);font-size:.9rem;background:linear-gradient(135deg,#c8c8d4,#fff,#8a8aaa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-copy{font-family:var(--ft);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+@media(max-width:700px){nav{padding:14px 20px}.nav-links{display:none}section{padding:60px 20px}.contact-grid{grid-template-columns:1fr;gap:36px}.cta-btns{padding-top:0}.gallery-wrap{grid-template-columns:1fr}footer{flex-direction:column;gap:12px;text-align:center}}
+</style>
 </head>
+<body>
 
-<body class="bg-black text-white font-sans">
-
-<!-- LOADER -->
-<div id="loader" class="fixed inset-0 bg-black flex items-center justify-center z-50">
-  <div class="text-center">
-    <h1 class="text-yellow-500 text-3xl font-bold animate-pulse">Empire</h1>
-    <p class="text-gray-400 mt-2">Loading...</p>
-  </div>
-</div>
-
-<!-- CUSTOM CURSOR -->
-<div id="cursor" class="fixed top-0 left-0 w-5 h-5 bg-yellow-500 rounded-full pointer-events-none z-50"></div>
-
-<!-- NAVBAR -->
-<nav class="flex justify-between items-center p-5 border-b border-gray-800">
-  <h1 class="text-2xl font-bold text-yellow-500">Empire</h1>
-  <div class="space-x-6 hidden md:block">
-    <a href="#home" class="hover:text-yellow-500">Home</a>
-    <a href="#services" class="hover:text-yellow-500">Services</a>
-    <a href="#gallery" class="hover:text-yellow-500">Gallery</a>
-    <a href="#contact" class="hover:text-yellow-500">Contact</a>
-  </div>
+<nav>
+  <a href="#home" class="nav-logo">&#9819; Empire</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="text-center py-20 px-5" data-aos="fade-up">
-  <h2 class="text-4xl md:text-6xl font-bold mb-4">Empire Hair Saloon</h2>
-  <p class="text-gray-400 mb-6">Style That Defines You</p>
-  <a href="#contact" class="btn bg-yellow-500 text-black px-6 py-3 rounded-xl font-semibold hover:bg-yellow-400">
-    Book Now
-  </a>
+<section id="home">
+  <div class="crown">&#9819;</div>
+  <h1 class="hero-title">EMPIRE</h1>
+  <p class="hero-sub">Salon</p>
+  <div class="divider"><span></span><span style="color:var(--gold)">&#10022;</span><span></span></div>
+  <p class="tagline">Style That Defines You</p>
+  <a href="#contact" class="btn">Book an Appointment</a>
 </section>
 
-<!-- SERVICES -->
-<section id="services" class="py-16 px-5">
-  <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-up">Our Services</h2>
+<section id="services">
+  <div class="sec-center">
+    <span class="sec-label">What We Offer</span>
+    <h2 class="sec-title">Our Services</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="grid">
+    <div class="card"><span class="card-icon">&#9986;</span><p class="card-name">Haircut</p><p class="card-desc">Trendy and classic styles tailored to you.</p></div>
+    <div class="card"><span class="card-icon">&#127912;</span><p class="card-name">Hair Colouring</p><p class="card-desc">Vibrant, fashion-forward colour with expert care.</p></div>
+    <div class="card"><span class="card-icon">&#10024;</span><p class="card-name">Hairstyling</p><p class="card-desc">From everyday looks to event-ready styles.</p></div>
+    <div class="card"><span class="card-icon">&#10027;</span><p class="card-name">Hair Highlighting</p><p class="card-desc">Balayage, ombre, streaks — light that moves.</p></div>
+    <div class="card"><span class="card-icon">&#128293;</span><p class="card-name">Hair Straightening</p><p class="card-desc">Sleek, smooth, frizz-free results that last.</p></div>
+    <div class="card"><span class="card-icon">&#128142;</span><p class="card-name">Keratin Treatment</p><p class="card-desc">Deep protein repair for silky, manageable hair.</p></div>
+    <div class="card"><span class="card-icon">&#128102;</span><p class="card-name">Children's Cuts</p><p class="card-desc">Gentle, fun cuts for our little VIPs.</p></div>
+    <div class="card"><span class="card-icon">&#129714;</span><p class="card-name">Shaving &amp; Beard</p><p class="card-desc">Hot-towel shaves and sharp beard shaping.</p></div>
+    <div class="card"><span class="card-icon">&#128134;</span><p class="card-name">Hair Spa</p><p class="card-desc">Deep-conditioning spa for nourished hair.</p></div>
+    <div class="card"><span class="card-icon">&#127807;</span><p class="card-name">Skin &amp; D-Tan</p><p class="card-desc">Restore your skin's natural radiance.</p></div>
+    <div class="card"><span class="card-icon">&#129494;</span><p class="card-name">Facial &amp; Massage</p><p class="card-desc">Luxurious facials and relaxing massages.</p></div>
+    <div class="card"><span class="card-icon">&#128167;</span><p class="card-name">Hydra Facial</p><p class="card-desc">Advanced hydration for glowing, youthful skin.</p></div>
+  </div>
+</section>
 
-  <div class="grid md:grid-cols-3 gap-8 text-center">
-    
-    <div class="bg-gray-900 p-6 rounded-2xl hover:scale-105 transition" data-aos="zoom-in">
-      <h3 class="text-xl font-semibold mb-2">Haircut</h3>
-      <p class="text-gray-400">Trendy and classic styles tailored to you.</p>
+<section id="gallery">
+  <span class="sec-label">Our Work</span>
+  <h2 class="sec-title">Gallery</h2>
+  <div class="sec-rule"></div>
+  <div class="gallery-wrap">
+    <div class="gitem">
+      <img src="haircut.jpeg" alt="Haircut at Empire Salon"/>
+      <span class="glabel">&#9986; Haircut</span>
     </div>
-
-    <div class="bg-gray-900 p-6 rounded-2xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
-      <h3 class="text-xl font-semibold mb-2">Beard Styling</h3>
-      <p class="text-gray-400">Sharp and clean beard shaping.</p>
+    <div class="gitem">
+      <img src="beard.jpeg" alt="Beard Styling at Empire Salon"/>
+      <span class="glabel">&#129714; Beard Styling</span>
     </div>
+  </div>
+</section>
 
-    <div class="bg-gray-900 p-6 rounded-2xl hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
-      <h3 class="text-xl font-semibold mb-2">Hair Treatments</h3>
-      <p class="text-gray-400">Keratin, spa, facial & more.</p>
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <span class="sec-label">Get In Touch</span>
+      <h2 class="sec-title">Contact Us</h2>
+      <div class="sec-rule"></div>
+      <h3>Phone &amp; WhatsApp</h3>
+      <a href="tel:+916355160393">+91 6355160393</a>
+      <h3>Address</h3>
+      <p>Om Plaza, Sai Villa 6 Society Road,<br>Near D-Mart, Opp. Riddhi Siddhi Party Plot,<br>Esbipura, Palanpur, Gujarat — 385001</p>
+      <h3>Hours</h3>
+      <p>Mon – Sat: 9 AM – 9 PM<br>Sunday: 10 AM – 7 PM</p>
     </div>
-
+    <div class="cta-btns">
+      <a href="tel:+916355160393" class="btn-cta call">&#128222; &nbsp;Call Now</a>
+      <a href="https://wa.me/916355160393" class="btn-cta wa" target="_blank">&#128172; &nbsp;WhatsApp</a>
+      <a href="#services" class="btn-cta">View Services</a>
+    </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery" class="py-16 px-5 bg-gray-950">
-  <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-up">Gallery</h2>
-
-  <div class="grid md:grid-cols-3 gap-6">
-    <img src="beard1.jpg" class="rounded-xl hover:scale-110 transition" data-aos="fade-up">
-    <img src="haircut1.jpg" class="rounded-xl hover:scale-110 transition" data-aos="fade-up" data-aos-delay="100">
-    <img src="haircut2.jpg" class="rounded-xl hover:scale-110 transition" data-aos="fade-up" data-aos-delay="200">
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="py-16 px-5 text-center" data-aos="fade-up">
-  <h2 class="text-3xl font-bold mb-6">About Us</h2>
-  <p class="max-w-2xl mx-auto text-gray-400">
-    Empire Hair Saloon offers premium grooming services including haircuts, beard styling,
-    hair colouring, keratin treatments, facials, and more — all focused on quality and style.
-  </p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="py-16 px-5 bg-gray-950 text-center" data-aos="fade-up">
-  <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
-
-  <p class="mb-4 text-gray-400">
-    Visit us or book your appointment via call/WhatsApp
-  </p>
-
-  <div class="space-y-4">
-    <a href="tel:+916355160393" class="btn block bg-yellow-500 text-black py-3 rounded-xl font-semibold">
-      Call Now
-    </a>
-
-    <a href="https://wa.me/916355160393" target="_blank" class="btn block bg-green-500 py-3 rounded-xl font-semibold">
-      WhatsApp
-    </a>
-  </div>
-
-  <!-- ADDRESS -->
-  <div class="mt-8 text-gray-400">
-    <p class="font-semibold text-white mb-2">Address:</p>
-    <p>
-      Om Plaza, Sai Villa 6 Society Road,<br>
-      Near D-Mart, Opp. Riddhi Siddhi Party Plot,<br>
-      Esbipura, Palanpur, Gujarat - 385001
-    </p>
-  </div>
-
-  <!-- MAP -->
-  <div class="mt-10">
-    <iframe 
-      src="https://www.google.com/maps?q=Om+Plaza+Sai+Villa+6+Society+Road+Palanpur&output=embed"
-      class="w-full h-64 rounded-xl border-0">
-    </iframe>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="text-center py-6 border-t border-gray-800 text-gray-500">
-  © 2026 Empire Hair Saloon. All rights reserved.
+<footer>
+  <span class="footer-logo">&#9819; Empire</span>
+  <span class="footer-copy">&#169; 2026 Empire Salon, Palanpur</span>
 </footer>
-
-<!-- SCRIPTS -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-<script>
-  AOS.init({ duration: 1000, once: true });
-
-  // LOADER
-  window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
-    loader.style.opacity = "0";
-    loader.style.transition = "0.5s";
-    setTimeout(() => loader.style.display = "none", 500);
-  });
-
-  // CURSOR
-  const cursor = document.getElementById("cursor");
-
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.top = e.clientY + "px";
-    cursor.style.left = e.clientX + "px";
-  });
-
-  document.querySelectorAll("a, button").forEach(el => {
-    el.addEventListener("mouseenter", () => {
-      cursor.style.transform = "translate(-50%, -50%) scale(1.8)";
-    });
-
-    el.addEventListener("mouseleave", () => {
-      cursor.style.transform = "translate(-50%, -50%) scale(1)";
-    });
-  });
-</script>
 
 </body>
 </html>
