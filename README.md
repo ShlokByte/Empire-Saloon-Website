@@ -21,4 +21,4 @@ This is the official website for **Empire Salon**, a hair salon in Palanpur, Guj
 - GitHub Pages (for hosting)
 
 ## About
-Built by Shlok as part of a BBA assignment at IIM Bangalore.
+Built by Shlok Modh as part of a BBA assignment at IIM Bangalore.
